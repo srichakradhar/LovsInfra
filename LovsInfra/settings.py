@@ -13,18 +13,20 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from distutils.command.config import config
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'foh!06bw47i(cqqgvz)(4&g-&9ba*m$z-w#5910u4x+nf7et9d'
+# SECRET_KEY = 'foh!06bw47i(cqqgvz)(4&g-&9ba*m$z-w#5910u4x+nf7et9d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lovs-infra.herokuapp.com', 'herokuapp.com']
 
 # Application definition
 
