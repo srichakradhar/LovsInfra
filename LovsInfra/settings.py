@@ -13,20 +13,18 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-from distutils.command.config import config
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'foh!06bw47i(cqqgvz)(4&g-&9ba*m$z-w#5910u4x+nf7et9d'
+SECRET_KEY = 'foh!06bw47i(cqqgvz)(4&g-&9ba*m$z-w#5910u4x+nf7et9d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
-ALLOWED_HOSTS = ['lovs-infra.herokuapp.com', 'herokuapp.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -79,10 +77,10 @@ WSGI_APPLICATION = 'LovsInfra.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lovsinfra',
-        'USER': 'chuck',
-        'PASSWORD': '',
-        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
+        'NAME': 'd8sdckvc6gicpi',
+        'USER': 'wccgpjtvjhbzww',
+        'PASSWORD': '88bb4bc03daa0451a707ec7ef391298967ff13aa34b79af36a6e19ae863640fa',
+        'HOST': 'ec2-54-221-221-153.compute-1.amazonaws.com',  # Or an IP Address that your DB is hosted on
         'PORT': '5432',
     },
     # 'mysql': {
@@ -144,11 +142,3 @@ MEDIA_URL = '/static/media/'
 STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, 'static'),)
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
