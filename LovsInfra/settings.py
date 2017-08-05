@@ -75,22 +75,22 @@ WSGI_APPLICATION = 'LovsInfra.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'lovsinfra',
-    #     'USER': 'chuck',
-    #     'PASSWORD': '',
-    #     'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
-    #     'PORT': '5432',
-    # },
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd8sdckvc6gicpi',
-        'USER': 'wccgpjtvjhbzww',
-        'PASSWORD': '88bb4bc03daa0451a707ec7ef391298967ff13aa34b79af36a6e19ae863640fa',
-        'HOST': 'ec2-54-221-221-153.compute-1.amazonaws.com',  # Or an IP Address that your DB is hosted on
+        'NAME': 'lovsinfra',
+        'USER': 'chuck',
+        'PASSWORD': '',
+        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
         'PORT': '5432',
     },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'd8sdckvc6gicpi',
+    #     'USER': 'wccgpjtvjhbzww',
+    #     'PASSWORD': '88bb4bc03daa0451a707ec7ef391298967ff13aa34b79af36a6e19ae863640fa',
+    #     'HOST': 'ec2-54-221-221-153.compute-1.amazonaws.com',  # Or an IP Address that your DB is hosted on
+    #     'PORT': '5432',
+    # },
     # 'mysql': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     'NAME': 'lovsinfra',
