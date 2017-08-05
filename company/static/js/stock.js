@@ -6,6 +6,8 @@ var material = [];
 
 $(document).ready(function () {
 
+    $('#admin-button').attr('href', '/admin');
+
     $('#add_button').on('click', function () {
 
         var category = $('#category').val();

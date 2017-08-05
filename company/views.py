@@ -39,3 +39,10 @@ def generate_invoice(request):
     # p.save()
     # return JsonResponse({"url": settings.MEDIA_URL + 'lovsInfraInvoice.pdf'})
     return JsonResponse({"url": settings.MEDIA_URL + 'LovsInfra_Invoice.pdf'})
+
+
+def business(request):
+    return render(request, 'company/business.html')
+
+def employees(request):
+    return render(request, 'company/employees.html')

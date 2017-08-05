@@ -84,4 +84,4 @@ local_settings.py
 db.sqlite3
 .gitignore
 .idea/
-LovsInfra/settings.py
+/LovsInfra/settings.py
