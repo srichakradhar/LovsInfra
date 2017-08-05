@@ -266,6 +266,14 @@ button.mdl-button--fab {
     align-self: flex-start;
 }
 
-table#material-table{
+table#material-table {
     width: 100%;
+}
+
+#social-media li.mdl-list__item {
+    margin-left: -20px;
+}
+
+#social-media {
+    align-items: center;
 }

@@ -10,6 +10,8 @@ $(document).ready(function () {
 
     $('#add_button').on('click', function () {
 
+        $('#tr-placeholder').hide();
+
         var category = $('#category').val();
         var product = $('#product').val();
         var color = $('#color').val();
