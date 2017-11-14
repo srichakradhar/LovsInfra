@@ -9,12 +9,25 @@ from LovsInfra import settings
 from company.models import *
 from reportlab.pdfgen import canvas
 
+@csrf_exempt
 def stocks(request):
     stock = {}
-    stock["products"] = list(Product.objects.values_list('name', flat=True))
-    stock["categories"] = list(Category.objects.values_list('name', flat=True))
-    stock["colors"] = list(CategoryColor.objects.values_list('color__name', flat=True))
-    return render(request, 'company/stocks.html', stock)
+
+    if request.is_ajax():
+        params = request.POST
+        stock["categories"] = list(ProductCategoryColor.objects.filter(product__name=params['product'])
+                                   .values('category').distinct().values_list('category__name', flat=True))
+        if params['category'] is not '':
+            stock["colors"] = list(ProductCategoryColor.objects.filter(product__name=params['product'], category__name=params['category'])
+                                       .values('color').distinct().values_list('color__name', flat=True))
+        return JsonResponse(stock)
+
+    else:
+
+        stock["products"] = list(Product.objects.values_list('name', flat=True))
+        stock["categories"] = []
+        stock["colors"] = []
+        return render(request, 'company/stocks.html', stock)
 
 
 def get_price(request, category):

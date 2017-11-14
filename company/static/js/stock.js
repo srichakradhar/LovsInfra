@@ -47,4 +47,44 @@ $(document).ready(function () {
             }
         });
     });
+
+    $product = $('#product');
+    $category = $('#category');
+    $color = $('#color');
+    product_val = $product.val();
+
+    $product.on('change',function () {
+
+        if(product_val !== $product.val()) {
+
+            $category.val('');
+
+            $.post('/', {product: $(this).val(), category: ''}, function (data) {
+
+                var catList = '';
+                for (cat in data.categories) {
+                    catList += '<li class="mdl-menu__item" data-val="' + data.categories[cat] + '" tabindex="-1">' + data.categories[cat] + '</li>';
+                }
+
+                $($($category[0].parentNode).find('ul')[0]).html(catList);
+            });
+
+        }
+
+        product_val = $product.val();
+
+    });
+
+    $category.on('change', function () {
+        $.post('/', {product: $product.val(), category: $(this).val()}, function(data){
+            var colorList = '';
+                for (color in data.colors) {
+                    colorList += '<li class="mdl-menu__item" data-val="' + data.colors[color] + '" tabindex="-1">' + data.colors[color] + '</li>';
+                }
+
+                $($($color[0].parentNode).find('ul')[0]).html(colorList);
+        });
+    });
+
+
 });
