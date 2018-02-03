@@ -1,0 +1,11 @@
+{% extends 'company/LovsInfra_Invoice_base.html' %}
+{% block content %}
+    {% for material in materials %}
+        <TR>
+            <TD class="tr4 td23"><P class="p1 ft2">{{ material.product }} {{ material.category }}</P></TD>
+            <TD class="tr4 td10"><P class="p8 ft9">{{ material.quantity }}</P></TD>
+            <TD colspan=2 class="tr4 td24"><P class="p11 ft9">{{ material.price }}</P></TD>
+            <TD class="tr4 td16"><P class="p10 ft9">{{ material.amount }}</P></TD>
+        </TR>
+    {%  endfor %}
+{% endblock %}

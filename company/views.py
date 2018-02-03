@@ -4,9 +4,11 @@ from __future__ import unicode_literals
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from django.template.loader import render_to_string
 
 from LovsInfra import settings
 from company.models import *
+import json, pdfkit
 from reportlab.pdfgen import canvas
 
 @csrf_exempt
@@ -51,7 +53,14 @@ def generate_invoice(request):
     # p.showPage()
     # p.save()
     # return JsonResponse({"url": settings.MEDIA_URL + 'lovsInfraInvoice.pdf'})
-    return JsonResponse({"url": settings.MEDIA_URL + 'LovsInfra_Invoice.pdf'})
+    if request.is_ajax():
+        # return render(request, 'company/Invoice.html', {"materials": json.loads(request.POST["materials"])})
+        content = render_to_string('company/Invoice.html', {"materials": json.loads(request.POST["materials"])})
+        # pdfkit.from_string(content, settings.BASE_DIR + '/company' + settings.MEDIA_URL + 'Lovs_InfraInvoice.pdf')
+        with open(settings.BASE_DIR + '/company' + settings.MEDIA_URL + 'LovsInfra_Invoice.html', 'w') as static_file:
+            static_file.write(content)
+
+    return JsonResponse({"url": settings.MEDIA_URL + 'LovsInfra_Invoice.html'})
 
 
 def business(request):

@@ -2,7 +2,7 @@
  * Created by chuck on 04/08/17.
  */
 
-var material = [];
+var materials = [];
 
 $(document).ready(function () {
 
@@ -24,19 +24,22 @@ $(document).ready(function () {
 
             $('#material-table').append(newRow);
 
-            material.push({
+            var price_factor = $('#price-factor').val()
+
+            materials.push({
                 'product': product,
                 'category': category,
                 'color': color,
                 'quantity': quantity,
-                'price': price * $('#price-factor').val()
+                'price': price * price_factor,
+                'amount': price * price_factor * quantity
             });
         });
 
     });
 
     $('#invoice-button').on('click', function () {
-        $.post('/invoice/', material, function (response) {
+        $.post('/invoice/', {"materials": JSON.stringify(materials)}, function (response) {
             var win = window.open(response.url, '_blank');
             if (win) {
                 //Browser has allowed it to be opened
@@ -67,6 +70,8 @@ $(document).ready(function () {
                 }
 
                 $($($category[0].parentNode).find('ul')[0]).html(catList);
+
+                getmdlSelect.init('.getmdl-select');
             });
 
         }
@@ -83,6 +88,8 @@ $(document).ready(function () {
                 }
 
                 $($($color[0].parentNode).find('ul')[0]).html(colorList);
+
+                getmdlSelect.init('.getmdl-select');
         });
     });
 
